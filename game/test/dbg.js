@@ -1,0 +1,20 @@
+const { chromium } = require('playwright');
+const path = require('path');
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 960, height: 540 } });
+  const errors = [];
+  page.on('console', m => console.log('[' + m.type() + ']', m.text()));
+  page.on('pageerror', e => errors.push('PAGEERROR: ' + e.message + '\n' + e.stack));
+  await page.goto('file://' + path.join('/Users/konstantin/Documents/Dev/Space Bunny/game', 'index.html'));
+  await page.waitForTimeout(1000);
+  console.log('ready:', await page.evaluate(() => !!window.__gameReady));
+  console.log('scene:', await page.evaluate(() => Object.keys(G.scenes).find(k => G.scenes[k] === G.scene)));
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(600);
+  console.log('after start scene:', await page.evaluate(() => Object.keys(G.scenes).find(k => G.scenes[k] === G.scene)));
+  console.log('world:', await page.evaluate(() => !!G.scenes.game.world));
+  await page.screenshot({ path: '/Users/konstantin/Documents/Dev/Space Bunny/game/shots/dbg.png' });
+  console.log('ERRORS:', errors);
+  await browser.close();
+})();

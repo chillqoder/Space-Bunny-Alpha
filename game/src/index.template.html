@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>OPERATION SANDSTORM - a procedural run-and-gun</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: #07060c; color: #cfc8d8;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+  }
+  #wrap { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  canvas#game {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    display: block;
+    box-shadow: 0 0 0 2px #241c2c, 0 0 40px rgba(0,0,0,0.8);
+    background: #000;
+  }
+  #touch { position: fixed; inset: 0; display: none; pointer-events: none; z-index: 20; }
+  .tbtn {
+    position: absolute; pointer-events: auto;
+    background: rgba(255,255,255,0.10);
+    border: 2px solid rgba(255,255,255,0.35);
+    border-radius: 12px;
+    color: rgba(255,255,255,0.8);
+    font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(2px);
+  }
+  .tbtn.on { background: rgba(255,220,100,0.35); border-color: #ffe060; color: #fff; }
+  #hint {
+    position: fixed; left: 50%; bottom: 6px; transform: translateX(-50%);
+    font-size: 11px; color: #55506a; letter-spacing: 1px; z-index: 5; pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="game"></canvas></div>
+<div id="touch"></div>
+<div id="hint">ARROWS MOVE &nbsp;|&nbsp; SPACE JUMP &nbsp;|&nbsp; Z FIRE &nbsp;|&nbsp; X GRENADE &nbsp;|&nbsp; C KNIFE &nbsp;|&nbsp; V SHIELD &nbsp;|&nbsp; ESC PAUSE &nbsp;|&nbsp; M MUTE</div>
+<script>
+/*__GAME__*/
+</script>
+</body>
+</html>
